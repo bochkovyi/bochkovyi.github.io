@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 .margin-jumbotron {
     margin-top: 120px!important;
 }
@@ -5,7 +7,7 @@
 body, html {
   height: 100%;
   margin: 0;
-  font: 400 15px/1.8 "Lato", sans-serif;
+  font: 400 15px/1.8 'Roboto', sans-serif;
   color: #777;
 }
 
@@ -19,17 +21,17 @@ body, html {
 
 }
 .bgimg-1 {
-  background-image: url("https://www.w3schools.com/howto/img_parallax.jpg");
+  background-image: url("/img/seasunset.jpg");
   min-height: 100%;
 }
 
 .bgimg-2 {
-  background-image: url("https://www.w3schools.com/howto/img_parallax2.jpg");
+  background-image: url("/img/sea.jpg");
   min-height: 400px;
 }
 
 .bgimg-3 {
-  background-image: url("https://www.w3schools.com/howto/img_parallax3.jpg");
+  background-image: url("/img/road.jpg");
   min-height: 400px;
 }
 
@@ -62,4 +64,18 @@ h3 {
     .bgimg-1, .bgimg-2, .bgimg-3 {
         background-attachment: scroll;
     }
+}
+
+footer {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+footer p {
+  background: rgba(0,0,0,0.5);
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+  border-radius: 1px;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
 }
