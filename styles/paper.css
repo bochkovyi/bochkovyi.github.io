@@ -71,3 +71,8 @@ footer p {
   padding: 10px;
   font-size: 14px;
 }
+
+.central-text-block {
+  max-width: 1024px;
+  margin: 0 auto;
+}
