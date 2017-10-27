@@ -7,11 +7,11 @@
     <base href="/">
     <meta name="keywords" content="Отдых на кинбурнской косе, база отдыха орхидея, отдых на черном море" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="/favicon.ico?v=2" type="image/x-icon">
-
+    <link rel="shortcut icon" href="/favicon.ico?v=3" type="image/x-icon">
     <script src="https://unpkg.com/vue"></script>
-    <link rel="stylesheet" href="/styles/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="/styles/paper.css" media="screen">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/styles/import.css" media="screen">
 
 </head>
 
@@ -124,10 +124,44 @@
           </div>
         </div>
     </div>
-</div>
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
 
+
+    <div class="row">
+          <div class="col-lg-12">
+            <div class="page-header">
+              <h1>Галерея</h1>
+            </div>
+
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li v-for="(item, index) in items" v-bind:class="{ 'active': index === 0 }" data-target="#myCarousel" :data-slide-to="index"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div v-for="(item, index) in items" v-bind:class="[{ 'active': index === 0 }, 'item']">
+                    <img :src="item.url" :alt="item.alt" style="width:100%; max-height: 640px;">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        </div>
+    </div>
+
+<br>
+</div>
+    <footer id="footer"></footer>
     <script src="/js/vue.js"></script>
     <script src="/js/main.js"></script>
 </body>

@@ -24,17 +24,17 @@ body, html {
 
 }
 .bgimg-1 {
-  background-image: url("/img/seasunset.jpg");
+  background-image: url("/img/nature/seasunset.jpg");
   min-height: 100%;
 }
 
 .bgimg-2 {
-  background-image: url("/img/sea.jpg");
+  background-image: url("/img/nature/sea.jpg");
   min-height: 100%;
 }
 
 .bgimg-3 {
-  background-image: url("/img/road.jpg");
+  background-image: url("/img/nature/road.jpg");
   min-height: 100%;
 }
 
@@ -68,20 +68,6 @@ h3 {
     }
 }
 
-footer {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-}
-footer p {
-  background: rgba(0,0,0,0.5);
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-  border-radius: 1px;
-  color: white;
-  padding: 10px;
-  font-size: 14px;
-}
-
 .central-text-block {
   max-width: 1024px;
   margin: 0 auto;
@@ -95,7 +81,42 @@ footer p {
   font-family: monospace;
 }
 
-
+.page-header h1{
+  font-size: 3rem;
+}
 .entered {
   color: rgb(255, 182, 0)!important;
 }
+
+#myCarousel {
+  margin-top: 40px;
+}
+
+/*FOOTER BEGIN*/
+footer {   width: 100%; background-color:#0e5366; margin-top: 40px; color: #e5e5e5;}
+
+footer > div.footer-1 {
+  min-height:350px;
+  font-size: 1.35rem;
+  text-align: justify;
+}
+
+footer > div > div.row > div {
+  margin-top: 60px;
+}
+
+footer > div.footer-2 {
+  height:50px;
+  background-color:#093947;
+  color: #828282;
+}
+
+.copyright p {
+  line-height: 50px;
+  margin: 0;
+}
+
+footer .panel {
+  color: #212121;
+}
+/*FOOTER END*/

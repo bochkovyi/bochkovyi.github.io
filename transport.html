@@ -2,82 +2,119 @@
 <html lang="ru">
 
 <head>
-    <meta charset="utf-8">
-    <title>База отдыха Орхидея</title>
-    <base href="/">
-    <meta name="keywords" content="Отдых на кинбурнской косе, база отдыха орхидея, отдых на черном море" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="/favicon.ico?v=2" type="image/x-icon">
-
-    <script src="https://unpkg.com/vue"></script>
-    <link rel="stylesheet" href="/styles/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="/styles/paper.css" media="screen">
-
+  <meta charset="utf-8">
+  <title>База отдыха Орхидея</title>
+  <base href="/">
+  <meta name="keywords" content="Отдых на кинбурнской косе, база отдыха орхидея, отдых на черном море" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico?v=3" type="image/x-icon">
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/styles/import.css" media="screen">
+{% seo %}
 </head>
 
 <body>
-    <div id="navbar"></div>
-<div class="central-text-block-monospace">Можно подумать, что добраться на Косу непросто. В какой-то степени, <strong>так это и есть.</strong>
-<br>
-Подобно первооткрывателям Америки, вам предстоит путь на остров по одному из трех великолепных маршрутов.
-Рассмотрим карту и транспортные опции подробнее!
-</div>
-<iframe id="google-map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d21981.65860860562!2d31.66358!3d46.4743049!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c68b791a330969%3A0xf8743886c85ffd6b!2z0KfQsNGB0YLQvdCw0Y8g0LHQsNC30LAg0L7RgtC00YvRhdCwICLQntGA0YXQuNC00LXRjyI!5e0!3m2!1sru!2sua!4v1508957087351" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  <div id="navbar"></div>
+  <div class="central-text-block-monospace">Можно подумать, что добраться на Косу непросто. В какой-то степени, <strong>так это и есть.</strong>
+    <br> Подобно первооткрывателям Америки, вам предстоит путь на остров по одному из трех великолепных маршрутов. Рассмотрим
+    карту и транспортные опции подробнее!
+  </div>
+  <iframe id="google-map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d21981.65860860562!2d31.66358!3d46.4743049!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c68b791a330969%3A0xf8743886c85ffd6b!2z0KfQsNGB0YLQvdCw0Y8g0LHQsNC30LAg0L7RgtC00YvRhdCwICLQntGA0YXQuNC00LXRjyI!5e0!3m2!1sru!2sua!4v1508957087351"
+    width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h1>1. Прямой маршрут на катере "Ракета"</h1>
+        </div>
+        Рейсы проводятся на плавсредствах компании Нибулон.
+        <br>Отправка из Херсона и Николаева.
+        <br>Катер подходит к причалу ближе к краю косы, оттуда - на всепроходном грузовике по пескам Кинбурна.
+        <br>Рейс необходимо бронировать за несколько дней до отправки.
+        <br>Актуальное расписание на сайте Нибулона, а также в facebook сообществе.
+        <br><br>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">Компания Нибулон</div>
+
+          <!-- List group -->
+          <ul class="list-group">
+            <li class="list-group-item">Сайт компании, раздел <a target="_blank" href="http://www.nibulon.com/data/pasazhirski-perevezennya/rozklad-reisiv.html">пассажирские перевозки</a></li>
+            <li class="list-group-item">Телефон: (050) 394-74-83</li>
+            <li class="list-group-item">E-mail: passflot@nibulon.com.ua</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h1>2. Катер Очаков – Покровские Хутора</h1>
+        </div>
+        Отправление катера от причала "Лесхоз" города Очакова.
+        <br>Каждый день в 7.00 и 15.00.
+        <br>От причала вас заберет грузовик.
+        <br>Точное расписание уточните у водителя.
+        <br><br>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">Виктор Степанович, водитель грузовика</div>
+
+          <!-- List group -->
+          <ul class="list-group">
+            <li class="list-group-item">Телефон: (067) 956-23-16</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h1>3. Объезд через Херсон, Олешки, Геройское</h1>
+        </div>
+        Автобус из Николаева отправляется в 9:30 с автостанции.
+        <br>Желательно уточнять расписание у водителя по телефону.
+        <br>Длительность поездки - около 5 часов.
+        <br>Доставка до базы отдыха, попросите высадить возле белых домиков Орхидеи.
+        <br><br>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">Виктор Степанович, водитель грузовика</div>
+
+          <!-- List group -->
+          <ul class="list-group">
+            <li class="list-group-item">Телефон: (067) 956-23-16</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
 
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-<div class="bs-component">
-              <table class="table table-striped table-hover ">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Категория блюда</th>
-                    <th>Варианты меню</th>
-                    <th>Стоимость</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Главный дом</td>
-                    <td>Двухместный стандарт</td>
-                    <td>300 грн.</td>
-                  </tr>
-                  <tr>
-                      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <td>2</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="info">
-                    <td>3</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                </tbody>
-              </table> 
-          </div>
-
-
-
-
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-
-    <script src="/js/vue.js"></script>
-    <script src="/js/main.js"></script>
+  <footer id="footer"></footer>
+  <script src="/js/vue.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 
 </html>
