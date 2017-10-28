@@ -17,6 +17,7 @@ body, html {
 .navbar-brand {
   font-size: 1.5rem;
 }
+
 @media (min-width: 1024px) {
   .navbar-brand {
     font-size: 2rem;
@@ -123,6 +124,12 @@ footer > div.footer-2 {
 .copyright p {
   line-height: 50px;
   margin: 0;
+}
+
+@media (max-width: 640px) {
+  .copyright p {
+    font-size: 1rem;
+  }
 }
 
 footer .panel {
