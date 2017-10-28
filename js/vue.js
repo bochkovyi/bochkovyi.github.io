@@ -1,6 +1,25 @@
 var currentPath = window.location.pathname.split("/");
 currentPath = currentPath[currentPath.length - 1];
 
+var orchidData = {
+  rooms: {
+    headers: ['Расположение', 'Тип номера', 'Стоимость'],
+    items: [{ description1: "Коттедж", description2: "Двухместный номер с теплым душем и Wi-FI.", price: 450 },
+    { description1: "Коттедж", description2: "Трехместный номер с летним душем.", price: 450 },
+    { description1: "Коттедж", description2: "Двухместный номер с летним душем.", price: 400 },
+    { description1: "Трейлер", description2: "Трехместный трейлер, по 100 грн. с человека. Летний душ, туалет, кухня.", price: 300 },
+    { description1: "Кемпинг", description2: "Возможность поставить свою палатку. Летний душ, туалет, кухня.", price: 60 },
+    ]
+  },
+  food: {
+    headers: ['Категория блюда', 'Варианты меню', 'Стоимость'],
+    items: [{ description1: "Завтрак", description2: "Каши, блинчики, сырники, напитки.", price: 60 },
+    { description1: "Обед", description2: "Первое - суп, борщ, второе - овощи, мясо, рыба, гарнир - каша, картошка.", price: 100 },
+    { description1: "Ужин", description2: "Блюда из мяса, рыбы, овощи.", price: 70 },
+    ]
+  }
+}
+
 var imagesNature = ['seasunset.jpg', 'sea.jpg', 'road.jpg',
   '20170712_113803.jpg',
   '20170709_192220_Richtone(HDR).jpg', '20170712_183301_Richtone(HDR).jpg', 'generalview.jpg',
@@ -19,19 +38,7 @@ var imagesRooms = [
   "2017-08-25.jpg"
 ];
 
-
-  var images = (currentPath === "nature.html") ? imagesNature : imagesRooms;
-  var prefix = (currentPath === "nature.html") ? '/img/nature/' : '/img/rooms/';
-
-  var items = [];
-  for (var i = 0; i < images.length; i++) {
-    items.push({
-      url: prefix + images[i],
-      alt: "Image"
-    });
-  }
-
-  Vue.component('carousel-element', {
+Vue.component('carousel-element', {
   template: '<div id="myCarousel" class="carousel slide" data-ride="carousel">\
     <!-- Indicators -->\
     <ol class="carousel-indicators">\
@@ -56,7 +63,17 @@ var imagesRooms = [
     </a>\
   </div>',
   data: function () {
-    return {items: items}
+    var images = (currentPath === "nature.html") ? imagesNature : imagesRooms;
+    var prefix = (currentPath === "nature.html") ? '/img/nature/' : '/img/rooms/';
+
+    var imageItems = [];
+    for (var i = 0; i < images.length; i++) {
+      imageItems.push({
+        url: prefix + images[i],
+        alt: "Image"
+      });
+    }
+    return { items: imageItems }
   }
 })
 
@@ -85,20 +102,19 @@ Vue.component('nav-vue', {
     </div>\
   ',
   data: function () {
-
     return {
       links: [{
-        url:"/nature.html",
-        name:"Природа"
-      },{
-        url:"/rooms-and-prices.html",
-        name:"Номера и цены"
-      },{
-        url:"/transport.html",
-        name:"Как добраться"
-      },{
-        url:"/contacts.html",
-        name:"Контакты и бронирование"
+        url: "/nature.html",
+        name: "Природа"
+      }, {
+        url: "/rooms-and-prices.html",
+        name: "Номера и цены"
+      }, {
+        url: "/transport.html",
+        name: "Как добраться"
+      }, {
+        url: "/contacts.html",
+        name: "Контакты и бронирование"
       }],
       active: currentPath
     }
@@ -149,6 +165,27 @@ Vue.component('footer-vue', {
   }
 })
 
+Vue.component('bs-table', {
+  props: ['data'],
+  template: '<table class="table table-striped table-hover ">\
+	<thead>\
+	  <tr>\
+		<th>#</th>\
+		<th v-for="header in data.headers">{{header}}</th>\
+	  </tr>\
+	</thead>\
+	<tbody>\
+	  <tr v-for="(item, index) in data.items" :class="item.class">\
+		<td>{{index + 1}}</td>\
+		<td>{{item.description1}}</td>\
+		<td>{{item.description2}}</td>\
+		<td>{{item.price}} грн.</td>\
+	  </tr>\
+	</tbody>\
+  </table>'
+})
+
 var vm = new Vue({
-  el: '#vue-app'
+  el: '#vue-app',
+  data: orchidData
 });
