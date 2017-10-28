@@ -77,10 +77,6 @@ Vue.component('carousel-element', {
   }
 })
 
-
-
-
-
 Vue.component('nav-vue', {
   template: '\
   <div class="navbar navbar-default navbar-fixed-top">\
