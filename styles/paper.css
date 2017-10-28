@@ -5,6 +5,10 @@ body, html {
   padding-top: 32px;
 }
 
+#vue-app {
+  height: 100%;
+}
+
 .navbar-brand {
   font-size: 1.5rem;
 }
