@@ -58,6 +58,7 @@ body, html {
 }
 
 .caption span.border {
+  display: inline-block;
   background-color: rgba(0,0,0,0.5);
   color: #fff;
   padding: 18px;
@@ -116,7 +117,7 @@ footer > div > div.row > div {
 }
 
 footer > div.footer-2 {
-  height:50px;
+  min-height:50px;
   background-color:#093947;
   color: #828282;
 }
@@ -130,7 +131,7 @@ footer > div.footer-2 {
   .copyright p {
     font-size: 1rem;
   }
-}
+} 
 
 footer .panel {
   color: #212121;
