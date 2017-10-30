@@ -80,9 +80,13 @@ h3 {
 }
 
 .central-text-block {
-  max-width: 1024px;
-  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
   font-size: 2rem;
+  color: #777;
+  background-color:white;
+  text-align:center;
+  text-align: justify;
 }
 
 .central-text-block-monospace {
