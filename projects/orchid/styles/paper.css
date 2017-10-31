@@ -1,4 +1,4 @@
-@font-face{font-family:'Glyphicons Halflings';src:url('/fonts/glyphicons-halflings-regular.ttf') format('truetype');}
+@font-face{font-family:'Glyphicons Halflings';src:url('../fonts/glyphicons-halflings-regular.ttf') format('truetype');}
 .glyphicon{position:relative;top:1px;display:inline-block;font-family:'Glyphicons Halflings';font-style:normal;font-weight:normal;line-height:1;-webkit-font-smoothing:antialiased;}
 .glyphicon-chevron-left:before{content:"\e079";}
 .glyphicon-chevron-right:before{content:"\e080";}
@@ -34,17 +34,17 @@ body, html {
 
 }
 .bgimg-1 {
-  background-image: url("/img/nature/seasunset.jpg");
+  background-image: url("../img/nature/seasunset.jpg");
   min-height: 100%;
 }
 
 .bgimg-2 {
-  background-image: url("/img/nature/sea.jpg");
+  background-image: url("../img/nature/sea.jpg");
   min-height: 100%;
 }
 
 .bgimg-3 {
-  background-image: url("/img/nature/road.jpg");
+  background-image: url("../img/nature/road.jpg");
   min-height: 100%;
 }
 

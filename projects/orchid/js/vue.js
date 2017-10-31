@@ -64,7 +64,7 @@ Vue.component('carousel-element', {
   </div>',
   data: function () {
     var images = (currentPath === "nature.html") ? imagesNature : imagesRooms;
-    var prefix = (currentPath === "nature.html") ? '/img/nature/' : '/img/rooms/';
+    var prefix = (currentPath === "nature.html") ? 'img/nature/' : 'img/rooms/';
 
     var imageItems = [];
     for (var i = 0; i < images.length; i++) {
@@ -82,7 +82,7 @@ Vue.component('nav-vue', {
   <div class="navbar navbar-default navbar-fixed-top">\
       <div class="container">\
         <div class="navbar-header">\
-          <a href="/" class="navbar-brand">База отдыха Орхидея</a>\
+          <a href="" class="navbar-brand">База отдыха Орхидея</a>\
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">\
             <span v-for="n in 3" class="icon-bar"></span>\
           </button>\
@@ -90,7 +90,7 @@ Vue.component('nav-vue', {
         <div class="navbar-collapse collapse" id="navbar-main">\
 \
           <ul class="nav navbar-nav navbar-right">\
-            <li v-for="link in links"><a :href="link.url" :class="{entered: link.url === \'/\' + active}">{{link.name}}</a></li>\
+            <li v-for="link in links"><a :href="link.url" :class="{entered: link.url === active}">{{link.name}}</a></li>\
           </ul>\
 \
         </div>\
@@ -100,16 +100,16 @@ Vue.component('nav-vue', {
   data: function () {
     return {
       links: [{
-        url: "/nature.html",
+        url: "nature.html",
         name: "Природа"
       }, {
-        url: "/rooms-and-prices.html",
+        url: "rooms-and-prices.html",
         name: "Номера и цены"
       }, {
-        url: "/transport.html",
+        url: "transport.html",
         name: "Как добраться"
       }, {
-        url: "/contacts.html",
+        url: "contacts.html",
         name: "Контакты и бронирование"
       }],
       active: currentPath
