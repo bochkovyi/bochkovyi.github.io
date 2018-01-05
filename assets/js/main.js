@@ -200,6 +200,19 @@ Vue.component('app-main', {
         },
       ]
     }
+  },
+  watch: {
+    currentPage: function (val) {
+      if (val !== window.location.hash.substr(1)) {
+        window.location.hash = val;
+      }
+    }
+  },
+  created: function () {
+    let path = window.location.hash.substr(1);
+    if (path !== "") {
+      this.currentPage = path;
+    }
   }
 });
 
