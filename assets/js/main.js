@@ -57,8 +57,13 @@ Vue.component('tool-converter', {
 <div class="form-group">
     <label for="exampleSelect1">Currency</label>
     <select @change="check" v-model="currency" class="form-control" name="exampleSelect1">
-      <option>USD</option>
-      <option>EUR</option>
+      <optgroup label="Developer's choice">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+      </optgroup>
+      <optgroup v-if="allCurrencies" label="All currencies">
+        <option v-for="currency in allCurrencies" :value="currency.cc">{{currency.txt}}</option>
+      <optgroup>
     </select>
 </div>
 
@@ -94,7 +99,8 @@ Vue.component('tool-converter', {
       loading: false,
       nbuMessage: "",
       uahAmount: 0,
-      tax: "5"
+      tax: "5",
+      allCurrencies: false
     }
   },
   methods: {
@@ -110,6 +116,12 @@ Vue.component('tool-converter', {
         })
       }
     }
+  },
+  created: function () {
+    let self = this;
+    $.get('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json', function (data) {
+      self.allCurrencies = data;
+    })
   }
 });
 
