@@ -63,7 +63,7 @@ Vue.component('tool-converter', {
       </optgroup>
       <optgroup v-if="allCurrencies" label="All currencies">
         <option v-for="currency in allCurrencies" :value="currency.cc">{{currency.txt}}</option>
-      <optgroup>
+      </optgroup>
     </select>
 </div>
 
