@@ -4,7 +4,7 @@ Vue.component('tool-facebook', {
 
 <div>
   <div class="form-group">
-    <label for="exampleTextarea">Enter Facebook links, line by line</label>
+    <label for="exampleTextarea">Enter Facebook mobile links (m.facebook.com), line by line</label>
     <textarea v-model="linksInput" @input="check" class="form-control" id="exampleTextarea" rows="8" ref="myComponent"></textarea>
   </div>
 
@@ -44,6 +44,73 @@ Vue.component('tool-csv', {
   template: `<div>
     TODO
   </div>`
+});
+
+Vue.component('tool-converter', {
+  template: `
+<div>
+<div class="form-group">
+  <label class="col-form-label" for="inputDefault">Exchange date</label>
+  <input @change="check" type="date" v-model="exchangeDate" class="form-control" name="inputDefault">
+</div>
+
+<div class="form-group">
+    <label for="exampleSelect1">Currency</label>
+    <select @change="check" v-model="currency" class="form-control" name="exampleSelect1">
+      <option>USD</option>
+      <option>EUR</option>
+    </select>
+</div>
+
+<div v-if="loading">
+  Loading...
+</div>
+
+<div v-if="nbuMessage">
+  <p>Raw data from NBU: {{nbuMessage}}</p>
+  <div class="form-group">
+    <label class="col-form-label" for="inputUAH">{{currency}} amount</label>
+    <input type="number" v-model="uahAmount" class="form-control" name="inputUAH">
+  </div>
+  <pre>Raw: {{uahAmount * nbuMessage.rate}} UAH; rounded: {{(uahAmount * nbuMessage.rate).toFixed(2)}} UAH</pre>
+
+  <div class="form-group">
+    <label for="exampleTax">Tax amount</label>
+    <select v-model="tax" class="form-control" name="exampleTax">
+      <option value="3">3%</option>
+      <option value="5">5%</option>
+    </select>
+  </div>
+
+  <pre>Tax: {{(uahAmount * nbuMessage.rate * tax / 100).toFixed(2)}} UAH</pre>
+
+</div>
+</div>
+`,
+  data() {
+    return {
+      exchangeDate: "",
+      currency: "USD",
+      loading: false,
+      nbuMessage: "",
+      uahAmount: 0,
+      tax: "5"
+    }
+  },
+  methods: {
+    check() {
+      if (this.exchangeDate && this.currency) {
+        let self = this;
+        self.loading = true;
+        let date = this.exchangeDate.replace(/-/g, "");
+        $.get(`https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=${self.currency}&date=${date}&json`,
+        function (data) {
+          self.loading = false;
+          self.nbuMessage = data[0];
+        })
+      }
+    }
+  }
 });
 
 Vue.component('app-nav', {
@@ -101,6 +168,10 @@ Vue.component('app-tools', {
   data() {
     return {
       tools: [
+        {
+          name: "Currency converter for UAH based on NBU data",
+          componentName: "tool-converter"
+        },
         {
           name: "Tool for converting mobile facebook links to full version",
           componentName: "tool-facebook"
