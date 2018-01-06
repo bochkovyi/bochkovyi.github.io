@@ -72,12 +72,13 @@ Vue.component('tool-converter', {
 </div>
 
 <div v-if="nbuMessage">
-  <p>Raw data from NBU: {{nbuMessage}}</p>
+  <p class="monospace">Raw data from NBU: {{nbuMessage}}</p>
   <div class="form-group">
     <label class="col-form-label" for="inputUAH">{{currency}} amount</label>
     <input type="number" v-model="uahAmount" class="form-control" name="inputUAH">
   </div>
-  <pre>Raw: {{uahAmount * nbuMessage.rate}} UAH; rounded: {{(uahAmount * nbuMessage.rate).toFixed(2)}} UAH</pre>
+  <p class="monospace">Raw: {{uahAmount * nbuMessage.rate}} UAH</p>
+  <p class="monospace">Rounded: {{(uahAmount * nbuMessage.rate).toFixed(2)}} UAH</p>
 
   <div class="form-group">
     <label for="exampleTax">Tax amount</label>
@@ -87,7 +88,8 @@ Vue.component('tool-converter', {
     </select>
   </div>
 
-  <pre>Tax: {{(uahAmount * nbuMessage.rate * tax / 100).toFixed(2)}} UAH</pre>
+  <p class="monospace">Tax raw: {{uahAmount * nbuMessage.rate * tax / 100}} UAH</p>
+  <p class="monospace">Tax rounded: {{(uahAmount * nbuMessage.rate * tax / 100).toFixed(2)}} UAH</p>
 
 </div>
 </div>
@@ -127,7 +129,7 @@ Vue.component('tool-converter', {
 
 Vue.component('app-nav', {
   props: ['currentPage', 'links'],
-  template: `<div class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  template: `<div class="navbar navbar-expand-lg fixed-top" v-bind:class="{ 'navbar-light': lightTheme,  'bg-light': lightTheme, 'navbar-dark': !lightTheme,  'bg-primary': !lightTheme}">
   <div class="container">
     <a href="" @click="clickHandler('home', $event)" class="navbar-brand">Natuurlijk!</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -140,15 +142,72 @@ Vue.component('app-nav', {
           <a class="nav-link" href="" @click="clickHandler(link.value, $event)" v-bind:class="{ active: currentPage === link.value }">{{link.name}}</a>
         </li>
       </ul>
+      <ul v-if="themes" class="nav navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes" aria-expanded="false">Change Design! <span class="caret"></span></a>
+          <div class="dropdown-menu" aria-labelledby="themes">
+            <a @click="customize({action: 'toggle'}, $event)" class="dropdown-item" href="">Toggle dark/light</a>
+            <a @click="customize({action: 'drop'}, $event)" class="dropdown-item" href="">Reset theme</a>
+            <div class="dropdown-divider"></div>
+            <a v-for="(theme, index) in themes" @click="changeTheme(index, $event)" class="dropdown-item" href="">
+              {{theme.name}} <span v-if="theme.name === currentTheme" class="badge badge-pill badge-warning">&#10003;</span>
+            </a>
+          </div>
+        </li>
+      </ul>
     </div>
 
   </div>
 </div>`,
+  data() {
+    return {
+      themes: false,
+      currentTheme: "Sketchy",
+      lightTheme: true
+    }
+  },
   methods: {
     clickHandler(page, event) {
       if (event) event.preventDefault()
       this.$emit('update:currentPage', page)
+    },
+    changeTheme(index, e) {
+      e.preventDefault();
+      this.setTheme(this.themes[index]);
+      localStorage.theme = JSON.stringify(this.themes[index]);
+    },
+    setTheme(theme) {
+      let currentThemeLink = $("head link[data-style='theme']");
+      currentThemeLink.attr("href", theme.css);
+      this.currentTheme = theme.name;
+    },
+    customize(settings, e) {
+      e.preventDefault();
+      if (settings.action) {
+        switch (settings.action) {
+          case "drop":
+            localStorage.clear();
+            location.reload();
+            break;
+          case "toggle":
+            this.lightTheme = !this.lightTheme;
+            localStorage.lightTheme = JSON.stringify(this.lightTheme);
+            break;
+        }
+      }
     }
+  },
+  created() {
+    if (localStorage.theme) {
+      this.setTheme(JSON.parse(localStorage.theme));
+    }
+    if (localStorage.lightTheme) {
+      this.lightTheme = JSON.parse(localStorage.lightTheme);
+    }
+    let self = this;
+    $.get('https://bootswatch.com/api/4.json', function (data) {
+      self.themes = data.themes;
+    })
   }
 });
 
@@ -236,6 +295,7 @@ Vue.component('app-main', {
 <div>
   <app-nav :currentPage.sync="currentPage" :links="links"></app-nav>
 
+  <br>
   <br>
   <br>
   <br>
