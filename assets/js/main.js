@@ -270,7 +270,7 @@ Vue.component('projects-live', {
   template: `
 <div>
   <div v-for="item in data">
-    <a v-bind:href="item.value">{{item.name}}</a>
+    <a v-bind:href="item.value" rel="noopener" target="_blank">{{item.name}}</a>
   </div>
 </div>
   `,
