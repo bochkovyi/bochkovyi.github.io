@@ -275,7 +275,7 @@ Vue.component('projects-live', {
 </div>
   `,
   data() {
-    return {data: [{value: "projects/partywise", name: "PartyWise"}, {value: "projects/mapapp", name: "LocationTracker"}, {value: "projects/orchid", name: "Orchid"}]};
+    return {data: [{value: "projects/partywise", name: "PartyWise"}, {value: "projects/mapapp", name: "LocationTracker"}, {value: "projects/currency-app", name: "Currency App"}, {value: "projects/orchid", name: "Orchid"}]};
   }
 });
 
