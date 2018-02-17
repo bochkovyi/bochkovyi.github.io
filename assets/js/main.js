@@ -162,8 +162,8 @@ Vue.component('app-nav', {
   data() {
     return {
       themes: false,
-      currentTheme: "Sketchy",
-      lightTheme: true
+      currentTheme: "Lux",
+      lightTheme: false
     }
   },
   methods: {
