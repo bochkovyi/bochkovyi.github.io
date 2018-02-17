@@ -22,7 +22,7 @@ Vue.component('tool-facebook', {
   data() {
     return {
       linksInput: "",
-	    linksOutput: [],
+        linksOutput: [],
     }
   },
   methods: {
@@ -215,7 +215,13 @@ Vue.component('app-home', {
   template: `
   
 <div>
-  Test home (TODO)
+  <h1>Welcome to this homepage written in Vue.js</h1>
+  <p>
+    It's very simple, therefore all code is placed in one file (<a href="https://bochkovyi.github.io/assets/js/main.js" rel="noopener" target="_blank">here</a>)
+  </p>
+  <p>Why this site exists at all? Just because here I can place some tools, like Currency Converter with tax calculator, or just links to my other apps.</p>
+  <p>Get in touch if you want more info!</p>
+  </div>
 </div>
   
   `
@@ -258,24 +264,32 @@ Vue.component('app-tools', {
 
 Vue.component('projects-code', {
   template: `
-  
 <div>
-  Test projects (TODO)
+  <div v-for="item in data">
+    <a v-bind:href="'https://github.com/bochkovyi/' + item.value" rel="noopener" target="_blank">{{item.name}}</a> <span class="badge badge-pill badge-warning">{{item.type}}</span>
+    <p>{{item.description}}</p>
+  </div>
 </div>
-  
-  `
+  `,
+  data() {
+    return {data: [{value: "currency-app", name: "Currency App", description: "Source code for Currency App Angular project", type: "Angular"},
+                   {value: "Simple-PHP-App", name: "Simple PHP app", description: "JSON database, user authentication, custom MVC framework", type: "PHP"},
+                   {value: "db-project", name: "JSON DB project", description: "Simple file key-value store with example node.js server and two endpoints", type: "Node.js"},
+                   {value: "imaginator", name: "Imaginator", description: "There is (was) a possibility to access pictures of the shutdown Panoramio by direct link. App downloads up to 20 pictures at random per call.", type: "Node.js"},
+                   {value: "web_services", name: "Web Services", description: "Very simple Node api that uses mysql library", type: "Node.js"}]};
+  }
 });
 
 Vue.component('projects-live', {
   template: `
 <div>
   <div v-for="item in data">
-    <a v-bind:href="item.value" rel="noopener" target="_blank">{{item.name}}</a>
+    <a v-bind:href="item.value" rel="noopener" target="_blank">{{item.name}}</a> <span class="badge badge-pill badge-warning">{{item.type}}</span>
   </div>
 </div>
   `,
   data() {
-    return {data: [{value: "projects/partywise", name: "PartyWise"}, {value: "projects/mapapp", name: "LocationTracker"}, {value: "projects/currency-app", name: "Currency App"}, {value: "projects/orchid", name: "Orchid"}]};
+    return {data: [{value: "projects/currency-app", name: "Currency App", type: "Angular"}, {value: "projects/partywise", name: "PartyWise", type: "Angular"}, {value: "projects/mapapp", name: "LocationTracker", type: "Angular"}, {value: "projects/orchid", name: "Orchid", type: "Vue.js"}]};
   }
 });
 
@@ -283,7 +297,7 @@ Vue.component('app-contacts', {
   template: `
   
 <div>
-  Test contacts (TODO)
+  Let's get in touch in <a href="https://www.linkedin.com/in/bochkovyi/" rel="noopener" target="_blank">LinkedIn</a>
 </div>
   
   `
