@@ -219,7 +219,7 @@ Vue.component('app-home', {
   <p>
     It's very simple, therefore all code is placed in one file (<a href="https://bochkovyi.github.io/assets/js/main.js" rel="noopener" target="_blank">here</a>)
   </p>
-  <p>Why this site exists at all? Just because here I can place some tools, like Currency Converter with tax calculator, or just links to my other apps.</p>
+  <p>At Natuurlijk I placed some tools, like Currency Converter with tax calculator, and links to my other apps.</p>
   <p>Get in touch if you want more info!</p>
   </div>
 </div>
