@@ -1,0 +1,16 @@
+//let test = [...$0.children]
+//test = test.map(item => item.textContent)
+let test = ["ID Number", "Name", "Date", "Address", "277474-2016", "DE LEON PARGA, JESUS, M", "11/20/16 0:00", "4400 W DAVIS ST", "012715-2016", "AKHTAR, SANA", "1/16/16 0:00", "5200 W DAVIS ST", "277485-2015", "JORDAN-GALINDO, DIANA", "11/29/15 0:00", "11000 HARRY HINES BLVD", "276612-2015", "NGUYEN, TUNG, THANH", "11/28/15 0:00", "10400 MARSH LN", "278699-2016", "NJUGUNA, NANCY, NJOKI", "11/21/16 0:00", "11800 GREENVILLE AVE", "278555-2016", "STEWART, ZATANYA", "11/21/16 0:00", "2800 CASEY ST", "278235-2016", "CITY OF DALLAS", "11/21/16 0:00", "9700 HARRY HINES BLVD", "278642-2015", "KEEPER, ALYSSA, M", "11/30/15 0:00", "4400 GREENVILLE AVE", "278410-2015", "WHITE, CHRISTIAN, LYNNAE", "11/30/15 0:00", "6000 S LANCASTER RD", "278292-2016", "RODRIGUEZ, ADRIAN, ARTURO", "11/21/16 0:00", "1900 S BUCKNER BLVD", "170865-2017", "CANO, FRANCISCO, JAVIER", "7/27/17 0:00", "500 W DAVIS ST", "170865-2017", "KIMBROUGH, MONIQUE", "7/27/17 0:00", "500 W DAVIS ST", "218605-2017", "ALVIZO, JOSE, HUMBERTO", "9/24/17 0:00", "10428 LOMBARDY LN", "278349-2015", "FRANKLIN, LISETTE", "11/30/15 0:00", "8400 S HAMPTON RD", "280186-2016", "WELLS, DAVIDA", "11/23/16 0:00", "8700 N CENTRAL EXPY"];
+let test1 = [];
+test.forEach((item, index) => 
+{if (index%4 === 0)
+    { 
+        test1.push([item]);
+    } else { 
+        test1[test1.length - 1].push(item);
+    }
+})
+
+let fs = require('fs');
+
+fs.writeFileSync('data.json', JSON.stringify(test1, null, 2));

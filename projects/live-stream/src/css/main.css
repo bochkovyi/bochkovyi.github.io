@@ -1,0 +1,49 @@
+.active {
+    color: red!important;
+}
+
+.card-body.text-success {
+	min-height: 150px;
+}
+
+h2 a {
+    text-decoration: none;
+}
+
+h2 a:hover {
+    text-decoration: none;
+    border-bottom: 1px dotted;
+}
+
+ul.no-decoration {
+    list-style-type: none;
+}
+
+.dropdown-menu.show[aria-labelledby="themes"]{
+    display:flex;
+    width:420px;
+    flex-wrap:wrap;
+    left: -300px;
+}
+.dropdown-menu.show[aria-labelledby="themes"] .dropdown-item{
+    width:33.333%
+}
+
+.dropdown-menu.show[aria-labelledby="themes"] .dropdown-item:nth-child(-n+2){
+    width:100%
+}
+
+.section-preview .dropdown-menu{
+    text-align:left
+}
+
+.dropdown-divider {
+    width: 100%;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.monospace {
+    font-family: monospace;
+    font-size: 136%;
+}
