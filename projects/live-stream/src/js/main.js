@@ -22,7 +22,7 @@ Vue.component('tool-facebook', {
   data() {
     return {
       linksInput: "",
-        linksOutput: [],
+      linksOutput: [],
     }
   },
   methods: {
@@ -53,9 +53,57 @@ Vue.component('app-form', {
 });
 
 Vue.component('app-data-search', {
-  template: `<div>
-    TODO DATA SEARCH
-  </div>`
+  template: `<section v-if="tableData">
+  <span class="badge badge-pill badge-warning">
+    SELECT * FROM super_data where {{searchKeyword.trim() === "" ? 1 : "name LIKE '%" + searchKeyword.trim() + "%'"}};
+  </span>
+  <div class="form-group">
+    <label class="form-control-label" for="filter">Search by name</label>
+    <input type="text" class="form-control" name="filter" v-model="searchKeyword">
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th v-for="header in tableHeader" scope="col">{{header}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="row in filteredTable">
+        <td v-for="td in row">{{td}}</td>
+      </tr>
+    </tbody>
+    </table>
+  </section>`,
+  data() {
+    return {
+      searchKeyword: "",
+      tableData: false
+    }
+  },
+  computed: {
+    tableHeader() {
+      let result = [];
+      if (this.tableData) {
+        result = this.tableData[0];
+      }
+      return result;
+    },
+    filteredTable() {
+      let result = [];
+      if (this.tableData && this.tableData.length > 1) {
+        result = this.tableData.slice(1);
+        if (this.searchKeyword) {
+          let searchKeyword = this.searchKeyword.toLowerCase().trim();
+          result = result.filter(item => item[1].toLowerCase().indexOf(searchKeyword) !== -1);
+        }
+      }
+      return result;
+    }
+  },
+  created: function () {
+    let promise = fetch('data.json');
+    promise.then(data => data.json()).then(data => this.tableData = data).catch(e => console.error('Could not fetch data', e));
+  }
 });
 
 Vue.component('tool-converter', {
@@ -126,8 +174,8 @@ Vue.component('tool-converter', {
         let promise = fetch(`https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=${self.currency}&date=${date}&json`);
         promise.then(function (response) {
           return response.json();
-        }).then((data) => {self.loading = false;self.nbuMessage = data[0]});
-        
+        }).then((data) => { self.loading = false; self.nbuMessage = data[0] });
+
       }
     }
   },
@@ -258,11 +306,13 @@ Vue.component('projects-code', {
 </div>
   `,
   data() {
-    return {data: [{value: "currency-app", name: "Currency App", description: "Source code for Currency App Angular project", type: "Angular"},
-                   {value: "Simple-PHP-App", name: "Simple PHP app", description: "JSON database, user authentication, custom MVC framework", type: "PHP"},
-                   {value: "db-project", name: "JSON DB project", description: "Simple file key-value store with example node.js server and two endpoints", type: "Node.js"},
-                   {value: "imaginator", name: "Imaginator", description: "There is (was) a possibility to access pictures of the shutdown Panoramio by direct link. App downloads up to 20 pictures at random per call.", type: "Node.js"},
-                   {value: "web_services", name: "Web Services", description: "Very simple Node api that uses mysql library", type: "Node.js"}]};
+    return {
+      data: [{ value: "currency-app", name: "Currency App", description: "Source code for Currency App Angular project", type: "Angular" },
+      { value: "Simple-PHP-App", name: "Simple PHP app", description: "JSON database, user authentication, custom MVC framework", type: "PHP" },
+      { value: "db-project", name: "JSON DB project", description: "Simple file key-value store with example node.js server and two endpoints", type: "Node.js" },
+      { value: "imaginator", name: "Imaginator", description: "There is (was) a possibility to access pictures of the shutdown Panoramio by direct link. App downloads up to 20 pictures at random per call.", type: "Node.js" },
+      { value: "web_services", name: "Web Services", description: "Very simple Node api that uses mysql library", type: "Node.js" }]
+    };
   }
 });
 
@@ -275,7 +325,7 @@ Vue.component('projects-live', {
 </div>
   `,
   data() {
-    return {data: [{value: "projects/currency-app", name: "Currency App", type: "Angular"}, {value: "projects/partywise", name: "PartyWise", type: "Angular"}, {value: "projects/mapapp", name: "LocationTracker", type: "Angular"}, {value: "projects/orchid", name: "Orchid", type: "Vue.js"}]};
+    return { data: [{ value: "projects/currency-app", name: "Currency App", type: "Angular" }, { value: "projects/partywise", name: "PartyWise", type: "Angular" }, { value: "projects/mapapp", name: "LocationTracker", type: "Angular" }, { value: "projects/orchid", name: "Orchid", type: "Vue.js" }] };
   }
 });
 
@@ -325,7 +375,7 @@ Vue.component('app-main', {
           name: "Useful tools",
           value: "tools",
           componentName: "app-tools"
-          
+
         },
         {
           name: "Projects - code",
