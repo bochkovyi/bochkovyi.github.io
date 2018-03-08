@@ -20,14 +20,25 @@
     <meta property="og:description" content="This site is a best place to wash your car in Texas and to watch some relevant YouTube videos about cars and car washing." />
     <meta property="og:url" content="https://bochkovyi.github.io/projects/live-stream/" />
     <meta property="og:type" content="website" />
-
+    
   </head>
 <body>
 <script>
   if (!window.Symbol) {
     document.write('Your browser does not support ES6 syntax<style type="text/undefined">');
   }
-</script> 
+</script>
+<script>
+  if (window.location.search) {
+    document.write(`
+    <div style="position: fixed; left: 28vw; top: 10vh; padding: 50px; background: #fff; z-index: 9999; -webkit-box-shadow: 0 30px 90px -20px rgba(0,0,0,0.3), 0 0 1px #a2a9b1; box-shadow: 0 30px 90px -20px rgba(0,0,0,0.3), 0 0 1px #a2a9b1; font-size: 14px; line-height: 20px; min-width: 300px; border-radius: 2px;">
+    <h1>You have submitted a form</h1>
+    <p>GET request emulation.</p>
+      <p style="width: 500px; word-wrap:break-word">${window.location.search}</p>
+    </div>
+    <style type="text/undefined">`);
+  }
+</script>
 <div id="main-app">
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -51,7 +62,7 @@
     <h1>Your best way to wash a car in Texas!</h1>
 </header>
 
-<article class="container with-spacer">
+<article class="container has-margin">
   <div class="row">
     <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
         <h2>Car cleaning. Redefined.</h2>
@@ -62,7 +73,7 @@
         <p>We offer a <em>completely new way</em> of making your car clean again.</p>
         <p>Only here, in Texas. At Live Stream Washery.</p>
         
-        <div class="card text-white bg-dark mb-3 with-spacer" style="max-width: 20rem;">
+        <div class="card text-white bg-dark mb-3 has-margin" style="max-width: 20rem;">
           <div class="card-header">Did you miss it?</div>
           <div class="card-body">
             <h4 class="card-title">Our live videos are back!</h4>
@@ -75,14 +86,14 @@
 
 <app-youtube id="youtube-videos"></app-youtube>
 
-<article class="container with-spacer">
+<article class="container has-margin">
     <div class="row">
       <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-          <h2>Submitting for submitting</h2>
+          <h2>Submitting for the sake of submitting</h2>
           <p>Sometimes even you get bored of not being able to submit a random form on a site.</p>
           <p>That's why we are here: to help you find the best car wash in Texas and, of course, submit a form!</p>
           
-          <div class="card text-white bg-success mb-3 with-spacer" style="max-width: 20rem;">
+          <div class="card text-white bg-success mb-3 has-margin" style="max-width: 20rem;">
             <div class="card-header">Submit? Let's admit.</div>
             <div class="card-body">
               <h4 class="card-title">Your success is important to us!</h4>
@@ -94,14 +105,14 @@
     </div>
 </article>
 
-<article class="container with-spacer">
+<article class="container has-margin">
     <div class="row">
       <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
           <h2>Manage your data</h2>
           <p>Don't forget to do some search</p>
           <p>It's always a good idea to explore something new!</p>
           
-          <div class="card text-white bg-info mb-3 with-spacer" style="max-width: 20rem;">
+          <div class="card text-white bg-info mb-3 has-margin" style="max-width: 20rem;">
             <div class="card-header">Serious business.</div>
             <div class="card-body">
               <h4 class="card-title">Your car will be washed</h4>
