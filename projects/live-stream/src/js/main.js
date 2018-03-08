@@ -40,9 +40,21 @@ Vue.component('tool-facebook', {
   }
 });
 
-Vue.component('tool-csv', {
+Vue.component('app-youtube', {
   template: `<div>
-    TODO
+    TODO YOUTUBE
+  </div>`
+});
+
+Vue.component('app-form', {
+  template: `<div>
+    TODO FORM
+  </div>`
+});
+
+Vue.component('app-data-search', {
+  template: `<div>
+    TODO DATA SEARCH
   </div>`
 });
 
@@ -130,36 +142,7 @@ Vue.component('tool-converter', {
 
 Vue.component('app-nav', {
   props: ['currentPage', 'links'],
-  template: `<div class="navbar navbar-expand-lg fixed-top" v-bind:class="{ 'navbar-light': lightTheme,  'bg-light': lightTheme, 'navbar-dark': !lightTheme,  'bg-primary': !lightTheme}">
-  <div class="container">
-    <a href="" @click="clickHandler('home', $event)" class="navbar-brand">Natuurlijk!</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav">
-        <li class="nav-item" v-for="link in links">
-          <a class="nav-link" href="" @click="clickHandler(link.value, $event)" v-bind:class="{ active: currentPage === link.value }">{{link.name}}</a>
-        </li>
-      </ul>
-      <ul v-if="themes" class="nav navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes" aria-expanded="false">Change Design! <span class="caret"></span></a>
-          <div class="dropdown-menu" aria-labelledby="themes">
-            <a @click="customize({action: 'toggle'}, $event)" class="dropdown-item" href="">Toggle dark/light</a>
-            <a @click="customize({action: 'drop'}, $event)" class="dropdown-item" href="">Reset theme</a>
-            <div class="dropdown-divider"></div>
-            <a v-for="(theme, index) in themes" @click="changeTheme(index, $event)" class="dropdown-item" href="">
-              {{theme.name}} <span v-if="theme.name === currentTheme" class="badge badge-pill badge-warning">&#10003;</span>
-            </a>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-</div>`,
+  template: `TEST`,
   data() {
     return {
       themes: false,

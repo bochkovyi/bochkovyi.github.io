@@ -29,10 +29,98 @@
   }
 </script> 
 <div id="main-app">
-<div class="hero"></div>
-<app-main></app-main>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a href="" class="navbar-brand">Texas Car Wash</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#youtube-videos">Watch YouTube videos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#form-submitting">Submit a form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#data-search">Read some interesting data</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h1>Your best way to wash a car in Texas!</h1>
+</header>
+
+<article class="container with-spacer">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+        <h2>Car cleaning. Redefined.</h2>
+        <p>Imagine these days driving around sandy deserts looking for some nice oil gigs.</p>
+        <p>That's what we mean: your car becomes dirty.</p>
+        <p>What you can get is to find one of these ordinary car washing stations. But that's not what you want, right?</p>
+        <p></p>
+        <p>We offer a <em>completely new way</em> of making your car clean again.</p>
+        <p>Only here, in Texas. At Live Stream Washery.</p>
+        
+        <div class="card text-white bg-dark mb-3 with-spacer" style="max-width: 20rem;">
+          <div class="card-header">Did you miss it?</div>
+          <div class="card-body">
+            <h4 class="card-title">Our live videos are back!</h4>
+            <p class="card-text">Check one of those to make your car washing in Texas great again!</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</article>
+
+<app-youtube id="youtube-videos"></app-youtube>
+
+<article class="container with-spacer">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+          <h2>Submitting for submitting</h2>
+          <p>Sometimes even you get bored of not being able to submit a random form on a site.</p>
+          <p>That's why we are here: to help you find the best car wash in Texas and, of course, submit a form!</p>
+          
+          <div class="card text-white bg-success mb-3 with-spacer" style="max-width: 20rem;">
+            <div class="card-header">Submit? Let's admit.</div>
+            <div class="card-body">
+              <h4 class="card-title">Your success is important to us!</h4>
+              <p class="card-text">Just make some user input and let's see how the form reacts!</p>
+            </div>
+          </div>
+          <app-form id="form-submitting"></app-form>
+      </div>
+    </div>
+</article>
+
+<article class="container with-spacer">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+          <h2>Manage your data</h2>
+          <p>Don't forget to do some search</p>
+          <p>It's always a good idea to explore something new!</p>
+          
+          <div class="card text-white bg-info mb-3 with-spacer" style="max-width: 20rem;">
+            <div class="card-header">Serious business.</div>
+            <div class="card-body">
+              <h4 class="card-title">Your car will be washed</h4>
+              <p class="card-text">You can wait till it rains, but what's the reason? Live Stream Car Washery in Texas as a choice!</p>
+            </div>
+          </div>
+          <app-data-search id="data-search"></app-data-search>
+      </div>
+    </div>
+</article>
 
 </div> <!-- main-app -->
+
+<footer id="footer">
+  <p>Made by Bogdan Bochkovvyi.</p>
+  <p>Source code can be found <a href="https://github.com/bochkovyi/bochkovyi.github.io/tree/master/projects/live-stream" target="blank" rel="nofollow noopener">here</a>.</p>
+  <p>Based on <a href="https://getbootstrap.com" target="blank" rel="nofollow noopener">Bootstrap</a>. Web fonts from <a href="https://fonts.google.com/" target="blank" rel="nofollow noopener">Google</a>.</p>
+</footer>
+
 <script src="src/js/main.js"></script>
 </body>
 </html>

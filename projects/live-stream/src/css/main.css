@@ -3,19 +3,49 @@
 html, body {
     font-family: 'Raleway', sans-serif;
 }
-
-
-.hero {
+/* OVERALL DESIGN */
+header {
     width: 100%;
     height: 500px;
+    background-color: white;
     background-image: url("../../media/texas.jpg");
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
-  }
-  
-  .bg-primary {
-    background: none!important;
-  }
+    position: relative;
+}
+
+header h1 {
+    position: absolute;
+    top: 200px;
+    right: 50px;
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.with-spacer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 980px) {
+    header h1 {
+        right: 0;
+    }
+}
+
+
+footer {
+    padding: 30px 50px;
+    line-height: 0.5rem;
+}
+
+/* OVERALL DESIGN END */
