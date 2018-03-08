@@ -1,7 +1,55 @@
 Vue.component('app-youtube', {
-  template: `<div>
-    TODO YOUTUBE
-  </div>`
+  template: `
+  <section id="app-youtube">
+    <div class="left-arrow"><button><i class="arrow left"></i></button></div>
+    <div class="main-block">
+      <div class="form-group">
+        <input type="email" class="form-control" v-model="youtubeSearch" placeholder="Search your video">
+      </div>
+
+      <div class="video-preview">
+        {{youtubeSearch}}
+        <button type="button" class="btn btn-secondary" @click="showModal=true">Open modal</button>
+      </div>
+    </div>
+    <div class="right-arrow"><button><i class="arrow right"></i></button></div>
+
+    <div class="modal" :style="{display: showModal ? 'block' : 'none'}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{selectedVideoTitle}}</h5>
+            <button type="button" class="close" aria-label="Close" @click="closeModal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <iframe width="560" height="315" :src="selectedVideoUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" @click="closeModal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>`,
+  data() {
+    return {
+      youtubeSearch:"Car Wash Texas",
+      showModal: false,
+      selectedVideoTitle: "Car Wash",
+      selectedVideoUrl: "https://www.youtube.com/embed/0VBnyRPSiho"
+    }
+  },
+  methods: {
+    clearErrors() {
+    },
+    closeModal() {
+      this.showModal=false;
+      this.selectedVideoUrl = "";
+    }
+  }
 });
 
 Vue.component('app-form', {

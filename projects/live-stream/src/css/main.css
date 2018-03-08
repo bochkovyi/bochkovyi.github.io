@@ -51,17 +51,66 @@ footer {
 /* OVERALL DESIGN END */
 
 /* YOUTUBE COMPONENT */
-#youtube-videos {
+#app-youtube {
     width: 100%;
-    height: 150px;
-    background: green;
+    height: 250px;
+    box-sizing: border-box;
+}
+
+.left-arrow, .right-arrow {
+    width: 5%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: 100px;
+}
+
+.left-arrow button, .right-arrow button {
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.main-block {
+    width: 90%;
+    height: 100%;
+    float: left;
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 5px;
+}
+
+.arrow:hover {
+    border-width: 0 8px 8px 0;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.modal-dialog {
+    max-width: 590px;
 }
 /* YOUTUBE COMPONENT END */
-
-/* FORM COMPONENT */
-
-/* FORM COMPONENT END */
-
-/* DATA-SEARCH COMPONENT */
-
-/* DATA-SEARCH COMPONENT END */
