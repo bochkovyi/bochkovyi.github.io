@@ -276,7 +276,9 @@ Vue.component('projects-code', {
                    {value: "Simple-PHP-App", name: "Simple PHP app", description: "JSON database, user authentication, custom MVC framework", type: "PHP"},
                    {value: "db-project", name: "JSON DB project", description: "Simple file key-value store with example node.js server and two endpoints", type: "Node.js"},
                    {value: "imaginator", name: "Imaginator", description: "There is (was) a possibility to access pictures of the shutdown Panoramio by direct link. App downloads up to 20 pictures at random per call.", type: "Node.js"},
-                   {value: "web_services", name: "Web Services", description: "Very simple Node api that uses mysql library", type: "Node.js"}]};
+                   {value: "web_services", name: "Web Services", description: "Very simple Node api that uses mysql library", type: "Node.js"},
+                   {value: "bochkovyi.github.io/tree/master/projects/live-stream", name: "Live Stream Car Washery", description: "App that uses YouTube API and shows some Vue.js components", type: "Vue.js"},
+                  ]};
   }
 });
 
@@ -289,7 +291,13 @@ Vue.component('projects-live', {
 </div>
   `,
   data() {
-    return {data: [{value: "projects/currency-app", name: "Currency App", type: "Angular"}, {value: "projects/partywise", name: "PartyWise", type: "Angular"}, {value: "projects/mapapp", name: "LocationTracker", type: "Angular"}, {value: "projects/orchid", name: "Orchid", type: "Vue.js"}]};
+    return {data: [
+      {value: "projects/currency-app", name: "Currency App", type: "Angular"}, 
+      {value: "projects/partywise", name: "PartyWise", type: "Angular"}, 
+      {value: "projects/mapapp", name: "LocationTracker", type: "Angular"}, 
+      {value: "projects/orchid", name: "Orchid", type: "Vue.js"},
+      {value: "projects/live-stream", name: "Live Stream Car Washery", type: "Vue.js"}
+    ]};
   }
 });
 
