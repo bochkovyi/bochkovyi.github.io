@@ -7,7 +7,6 @@ html, body {
 header {
     width: 100%;
     height: 500px;
-    background-color: white;
     background-image: url("../../media/texas.jpg");
     background-size: cover;
     background-position: 50% 50%;
@@ -55,15 +54,14 @@ footer {
     width: 100%;
     height: 250px;
     box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .left-arrow, .right-arrow {
-    width: 5%;
-    height: 100%;
-    float: left;
+    flex-basis: 8%;
     text-align: center;
-    padding-top: 120px;
-    padding-bottom: 100px;
 }
 
 .left-arrow button, .right-arrow button {
@@ -74,9 +72,7 @@ footer {
 }
 
 .main-block {
-    width: 90%;
-    height: 100%;
-    float: left;
+    flex-basis: 85%;
 }
 
 .arrow {
@@ -110,7 +106,84 @@ footer {
     -webkit-transform: rotate(45deg);
 }
 
+.arrow-container button[disabled] .arrow {
+    border-color:gray;
+}
+
+.arrow-container button[disabled] .arrow:hover {
+    border-width: 0 5px 5px 0;
+}
+
 .modal-dialog {
     max-width: 590px;
 }
+
+.video-preview {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.youtube-video-preview-container {
+    width: 100%;
+    max-width: 480px;
+    height: 150px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.youtube-video-preview-link {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    bottom: 0px;
+    height: 60px;
+    overflow: hidden;
+}
 /* YOUTUBE COMPONENT END */
+
+/* SPINNER */
+.loading {
+    margin: 60px auto;
+    width: 80px;
+  }
+  .loading-bar {
+    display: inline-block;
+    width: 10px;
+    height: 58px;
+    border-radius: 4px;
+    animation: loading 1s ease-in-out infinite;
+    margin-right: 3px;
+  }
+  .loading-bar:nth-child(1) {
+    background-color: #3498db;
+    animation-delay: 0;
+  }
+  .loading-bar:nth-child(2) {
+    background-color: #c0392b;
+    animation-delay: 0.09s;
+  }
+  .loading-bar:nth-child(3) {
+    background-color: #f1c40f;
+    animation-delay: .18s;
+  }
+  .loading-bar:nth-child(4) {
+    background-color: #27ae60;
+    animation-delay: .27s;
+  }
+  
+  @keyframes loading {
+    0% {
+      transform: scale(1);
+    }
+    20% {
+      transform: scale(1, 2.2);
+    }
+    40% {
+      transform: scale(1);
+    }
+  }
+/* SPINNER END */

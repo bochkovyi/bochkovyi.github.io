@@ -1,18 +1,29 @@
 Vue.component('app-youtube', {
   template: `
   <section id="app-youtube">
-    <div class="left-arrow"><button><i class="arrow left"></i></button></div>
+    <div class="arrow-container left-arrow"><button :disabled="!prevPageToken" @click="arrowClick(false)"><i class="arrow left"></i></button></div>
     <div class="main-block">
       <div class="form-group">
-        <input type="email" class="form-control" v-model="youtubeSearch" placeholder="Search your video">
+        <input type="text" class="form-control" v-model="searchString" placeholder="Search your video">
       </div>
-
-      <div class="video-preview">
-        {{youtubeSearch}}
-        <button type="button" class="btn btn-secondary" @click="showModal=true">Open modal</button>
+      <div class="video-preview-loading" v-if="loading">
+        <div class="loading">
+          <div class="loading-bar" v-for="i in [1, 2, 3, 4]"></div>
+        </div>
+      </div>
+      <div class="video-preview-fail" v-else-if="items.length === 0">
+        <p>We're run out of #livestreams on this topic. Let's try ordinary videos?</p>
+        <button class="btn btn-primary" @click="switchLivestreamMode(false)">Yes, let's give it a try</button>
+      </div>
+      <div class="video-preview" v-else>
+        <div v-for="(item, key) in items" class="youtube-video-preview-container" :style="{backgroundImage: 'url(' + item.snippet.thumbnails.high.url + ')' }">
+          <a class="youtube-video-preview-link" href="#" @click="openModal($event, item.id.videoId, item.snippet.title)">
+            {{ item.snippet.title.length < 45 ? item.snippet.title : item.snippet.title.substr(0, 45).trim() + '...'}}
+          </a>
+        </div>
       </div>
     </div>
-    <div class="right-arrow"><button><i class="arrow right"></i></button></div>
+    <div class="arrow-container right-arrow"><button :disabled="!nextPageToken" @click="arrowClick(true)"><i class="arrow right"></i></button></div>
 
     <div class="modal" :style="{display: showModal ? 'block' : 'none'}">
       <div class="modal-dialog" role="document">
@@ -36,19 +47,77 @@ Vue.component('app-youtube', {
   </section>`,
   data() {
     return {
-      youtubeSearch:"Car Wash Texas",
+      searchString: 'Space X',
       showModal: false,
-      selectedVideoTitle: "Car Wash",
-      selectedVideoUrl: "https://www.youtube.com/embed/0VBnyRPSiho"
+      selectedVideoTitle: null,
+      selectedVideoUrl: null,
+      prevPageToken: null,
+      nextPageToken: null,
+      items: [],
+      loading: true,
+      liveStream: true
     }
   },
   methods: {
-    clearErrors() {
+    doYoutubeSearch(token = false) {
+      this.loading = true;
+      const apiEndpoint = 'https://www.googleapis.com/youtube/v3/search/?part=snippet';
+      const settings = '&maxResults=4&type=video&key=AIzaSyCAgUyzqgqLEXJpY_FY4qKttL7Jck7eaRc';
+      const searchKeyword = `&q=${this.searchString}`;
+      let url = apiEndpoint + settings + searchKeyword;
+      if (token) {
+        url += `&pageToken=${token}`;
+      }
+      if (this.liveStream) {
+        url += '&eventType=live';
+      }
+      let promise = fetch(url);
+      promise.then(data => data.json()).then(data => {
+        this.items = data.items;
+        this.prevPageToken = data.prevPageToken;
+        this.nextPageToken = data.nextPageToken;
+        this.loading = false;
+      }).catch(e => console.error('Could not fetch data', e));
+    },
+    openModal(e, videoId, videoTitle) {
+      e.preventDefault();
+      this.selectedVideoUrl = `https://www.youtube.com/embed/${videoId}`;
+      this.selectedVideoTitle = videoTitle;
+      this.showModal = true;
     },
     closeModal() {
       this.showModal=false;
       this.selectedVideoUrl = "";
+    },
+    arrowClick(nextVideo) {
+      if (nextVideo) {
+        this.doYoutubeSearch(this.nextPageToken);
+      } else {
+        this.doYoutubeSearch(this.prevPageToken);
+      }
+    },
+    switchLivestreamMode(isLivestreamActive = true) {
+      this.liveStream = isLivestreamActive;
+      this.doYoutubeSearch();
     }
+  },
+  watch: {
+    searchString: function (currentValue, prevValue) {
+      if (this.debounceTimer) {
+        clearTimeout(this.debounceTimer);
+      }
+
+      this.debounceTimer = setTimeout(() => {
+        let currentValueTrimmed = currentValue.trim();
+        if (!this.prevValueTrimmed || currentValueTrimmed !== this.prevValueTrimmed) {
+          this.prevValueTrimmed = currentValueTrimmed;
+          this.doYoutubeSearch(); // distinctUntilChanged
+        }
+      }, 500) // debounceTime
+    }
+  },
+  created: function() {
+    this.doYoutubeSearch();
   }
 });
 
