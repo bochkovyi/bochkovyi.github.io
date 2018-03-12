@@ -47,7 +47,7 @@ Vue.component('app-youtube', {
   </section>`,
   data() {
     return {
-      searchString: 'Space X',
+      searchString: 'Trains',
       showModal: false,
       selectedVideoTitle: null,
       selectedVideoUrl: null,
