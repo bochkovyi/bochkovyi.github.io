@@ -268,7 +268,7 @@ Vue.component('projects-code', {
   <div v-for="item in data">
     <a v-bind:href="'https://github.com/bochkovyi/' + item.value" rel="noopener" target="_blank">{{item.name}}</a> 
     <span class="badge badge-pill badge-warning">{{item.type}}</span>&nbsp;<span class="badge badge-pill badge-success">{{item.year}}</span>
-    <span v-if="item.new" class="badge badge-pill badge-success" style="background: blue">NEW!</span>
+    <span v-if="item.new" class="badge badge-pill badge-success" style="background: #ff1727">NEW!</span>
     <p>{{item.description}}</p>
   </div>
 </div>
