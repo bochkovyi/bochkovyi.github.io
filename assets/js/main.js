@@ -266,20 +266,23 @@ Vue.component('projects-code', {
   template: `
 <div>
   <div v-for="item in data">
-    <a v-bind:href="'https://github.com/bochkovyi/' + item.value" rel="noopener" target="_blank">{{item.name}}</a> <span class="badge badge-pill badge-warning">{{item.type}}</span>
+    <a v-bind:href="'https://github.com/bochkovyi/' + item.value" rel="noopener" target="_blank">{{item.name}}</a> 
+    <span class="badge badge-pill badge-warning">{{item.type}}</span>&nbsp;<span class="badge badge-pill badge-success">{{item.year}}</span>
+    <span v-if="item.new" class="badge badge-pill badge-success" style="background: blue">NEW!</span>
     <p>{{item.description}}</p>
   </div>
 </div>
   `,
   data() {
-    return {data: [{value: "currency-app", name: "Currency App", description: "Source code for Currency App Angular project", type: "Angular"},
-                   {value: "Simple-PHP-App", name: "Simple PHP app", description: "JSON database, user authentication, custom MVC framework", type: "PHP"},
-                   {value: "db-project", name: "JSON DB project", description: "Simple file key-value store with example node.js server and two endpoints", type: "Node.js"},
-                   {value: "imaginator", name: "Imaginator", description: "There is (was) a possibility to access pictures of the shutdown Panoramio by direct link. App downloads up to 20 pictures at random per call.", type: "Node.js"},
-                   {value: "web_services", name: "Web Services", description: "Very simple Node api that uses mysql library", type: "Node.js"},
-                   {value: "bochkovyi.github.io/tree/master/projects/live-stream", name: "Live Stream Car Washery", description: "App that uses YouTube API and shows some Vue.js components", type: "Vue.js"},
-                   {value: "Battleship", name: "Battleship", description: "Good and famous Battleship game with random ship placement", type: "React with TypeScript"},
-                   {value: "CMS-with-router", name: "CMS with Router", description: "JSON sitemap fetched at app start and defines the content", type: "React with Router"}
+    return {data: [{value: "currency-app", name: "Currency App", description: "Source code for Currency App Angular project", type: "Angular", year: 2018},
+                   {value: "Simple-PHP-App", name: "Simple PHP app", description: "JSON database, user authentication, custom MVC framework", type: "PHP", year: 2017},
+                   {value: "db-project", name: "JSON DB project", description: "Simple file key-value store with example node.js server and two endpoints", type: "Node.js", year: 2017},
+                   {value: "imaginator", name: "Imaginator", description: "There is (was) a possibility to access pictures of the shutdown Panoramio by direct link. App downloads up to 20 pictures at random per call.", type: "Node.js", year: 2017},
+                   {value: "web_services", name: "Web Services", description: "Very simple Node api that uses mysql library", type: "Node.js", year: 2017},
+                   {value: "bochkovyi.github.io/tree/master/projects/live-stream", name: "Live Stream Car Washery", description: "App that uses YouTube API and shows some Vue.js components", type: "Vue.js", year: 2018},
+                   {value: "Battleship", name: "Battleship", description: "Good and famous Battleship game with random ship placement", type: "React with TypeScript", year: 2018},
+                   {value: "CMS-with-router", name: "CMS with Router", description: "JSON sitemap fetched at app start and defines the content", type: "React with Router", year: 2018},
+                   {value: "nextjs-orders-app", name: "Orders App", description: "SSR payment app with Next.js/React/Sequelize", type: "React + Next.js + Sequelize", year: 2019, new: true},
                   ]};
   }
 });
